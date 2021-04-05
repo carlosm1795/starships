@@ -1,23 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
-
+import logo from "./logo.svg";
+import "./App.css";
+import { BrowserRouter, Route, NavLink } from "react-router-dom";
+import Home from "./components/Home/Home.jsx";
+import Spaceships from "./components/Spaceships/spaceships.jsx";
+import SpaceshipsList from "./components/Spaceships/spaceshipsList";
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <BrowserRouter>
+        {/* <BrowserRouter>
+        <Home />
+        <Route exact path="/Spaceships">
+          <Spaceships />
+        </Route>
+        <Route exact path="/SpaceshipsList/:id">
+          <SpaceshipsList />
+        </Route>
+      </BrowserRouter> */}
+        <header>
+          <nav>
+            <ul>
+              <li>
+                <NavLink to="/Spaceships/15">SpaceShips</NavLink>
+              </li>
+              <li>
+                <NavLink to="/SpaceshipsList">SpaceShips List</NavLink>
+              </li>
+            </ul>
+          </nav>
+        </header>
+        <div>
+          <Route path="/Spaceships/:id" component={Spaceships} />
+          <Route path="/SpaceshipsList" component={SpaceshipsList} />
+        </div>
+      </BrowserRouter>
     </div>
   );
 }
